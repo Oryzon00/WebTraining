@@ -1,8 +1,21 @@
-function my_ft(obj: {value: number}) : void	{
-	obj.value = 10;
-}
+type Character = {
+	name: string;
+	life: number;
+	attack: number;
+	defense: number;
+ };
+ 
 
-let x = { value : 0};
-console.log(x);
-my_ft(x);
-console.log(x);
+type Shop<T> = {
+	name: string;
+	owner: Character;
+	items: Array<T>;
+};
+
+type Equipment = {
+	price: number;
+	attack?: number;
+	defense?: number;
+};
+
+type Armory = Shop<Equipment>;
