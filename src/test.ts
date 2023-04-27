@@ -19,3 +19,5 @@ type Equipment = {
 };
 
 type Armory = Shop<Equipment>;
+
+console.log("Hello world!");
