@@ -18,6 +18,7 @@ type Equipment = {
 	defense?: number;
 };
 
-type Armory = Shop<Equipment>;
+type Armory = Shop<Equipment>; 
 
 console.log("Hello world!");
+
