@@ -1,29 +1,31 @@
-type Props = {
-	value1: string;
-	value2: string;
-};
+import { useState } from "react";
 
-function Square({ value1, value2 }: Props) {
-	return <button className="square">{value1 + value2}</button>;
+interface Sign {
+	value: "X" | "O" | "";
+}
+
+function Square({ value }: Sign) {
+	return <button className="square" >{value}</button>;
 }
 
 function Board() {
+	const [squares, setSquares] = useState(Array< "X" | "O" | "">(9).fill(""));
 	return (
 		<>
 			<div className="board-row">
-				<Square value1={"0"} value2={"1"} />
-				<Square value="2" />
-				<Square value="3" />
+				<Square value={squares[0]} />
+				<Square value={squares[1]} />
+				<Square value={squares[2]} />
 			</div>
 			<div className="board-row">
-				<Square value="4" />
-				<Square value="5" />
-				<Square value="6" />
+				<Square value={squares[3]} />
+				<Square value={squares[4]} />
+				<Square value={squares[5]} />
 			</div>
 			<div className="board-row">
-				<Square value="7" />
-				<Square value="8" />
-				<Square value="9" />
+				<Square value={squares[6]} />
+				<Square value={squares[7]} />
+				<Square value={squares[8]} />
 			</div>
 		</>
 	);
