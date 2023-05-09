@@ -1,49 +1,50 @@
-import { useState } from "react";
-import { Input } from "./TBoard";
+import Square from "../Square/Square";
+import { BoardProps } from "./TBoard";
 
-function Board() {
+
+function Board({onSquareClick, squares}: BoardProps) {
 	return (
 		<>
 			<div className="board-row">
 				<Square
 					value={squares[0]}
-					onSquareClick={() => handleClick(0)}
+					onSquareClick={() => onSquareClick(0)}
 				/>
 				<Square
 					value={squares[1]}
-					onSquareClick={() => handleClick(1)}
+					onSquareClick={() => onSquareClick(1)}
 				/>
 				<Square
 					value={squares[2]}
-					onSquareClick={() => handleClick(2)}
+					onSquareClick={() => onSquareClick(2)}
 				/>
 			</div>
 			<div className="board-row">
 				<Square
 					value={squares[3]}
-					onSquareClick={() => handleClick(3)}
+					onSquareClick={() => onSquareClick(3)}
 				/>
 				<Square
 					value={squares[4]}
-					onSquareClick={() => handleClick(4)}
+					onSquareClick={() => onSquareClick(4)}
 				/>
 				<Square
 					value={squares[5]}
-					onSquareClick={() => handleClick(5)}
+					onSquareClick={() => onSquareClick(5)}
 				/>
 			</div>
 			<div className="board-row">
 				<Square
 					value={squares[6]}
-					onSquareClick={() => handleClick(6)}
+					onSquareClick={() => onSquareClick(6)}
 				/>
 				<Square
 					value={squares[7]}
-					onSquareClick={() => handleClick(7)}
+					onSquareClick={() => onSquareClick(7)}
 				/>
 				<Square
 					value={squares[8]}
-					onSquareClick={() => handleClick(8)}
+					onSquareClick={() => onSquareClick(8)}
 				/>
 			</div>
 		</>

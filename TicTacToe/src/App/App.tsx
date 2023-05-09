@@ -1,8 +1,9 @@
-import Board from "./Board/Board";
-import Status from "./Status/Status";
-import ResetButton from "./ResetButton/ResetButton";
-
 import { useState } from "react";
+
+import Board from "../Board/Board";
+import ResetButton from "../ResetButton/ResetButton";
+import Status from "../Status/Status";
+import { Input } from "./TApp";
 
 function checkWinner(squares: Array<Input>): Input | "equality" {
 	const lines: Array<Array<number>> = [
@@ -56,9 +57,8 @@ function App() {
 	return (
 		<>
 			<div>
-				<Board />
+				<Board onSquareClick={handleClick} squares={squares} />
 			</div>
-
 			<div>
 				<Status winner={checkWinner(squares)} />
 			</div>

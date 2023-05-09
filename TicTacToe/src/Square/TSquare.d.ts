@@ -1,4 +1,4 @@
-import { Input } from "../Board/TBoard"
+import { Input } from "../App.tsx"
 
 export interface SquareProps {
 	value: Input;

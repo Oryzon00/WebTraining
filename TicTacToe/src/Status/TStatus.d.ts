@@ -1,3 +1,5 @@
+import { Input } from "../App";
+
 export interface  StatusProps  {
 	winner: Input | "equality";
 };
