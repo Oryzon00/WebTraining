@@ -4,6 +4,7 @@ import Board from "../Board/Board";
 import ResetButton from "../ResetButton/ResetButton";
 import Status from "../Status/Status";
 import { Input } from "./TApp";
+import "./App.styles.css";
 
 function checkWinner(squares: Array<Input>): Input | "equality" {
 	const lines: Array<Array<number>> = [
@@ -32,9 +33,15 @@ function checkWinner(squares: Array<Input>): Input | "equality" {
 	return "";
 }
 
+function historyDisplay(history: Array<Array<Input>>)
+{
+	
+}
+
 function App() {
 	const [xTurn, setXTurn] = useState(true);
 	const [squares, setSquares] = useState(Array<Input>(9).fill(""));
+	const [history, setHistory] = useState([Array<Input>(9).fill("")]);
 
 	function handleReset(): void {
 		const nextSquares = squares.slice();
@@ -51,21 +58,24 @@ function App() {
 		else nextSquares[index] = "O";
 
 		setXTurn(!xTurn);
+		setHistory(history.concat(nextSquares));
 		setSquares(nextSquares);
 	}
 
+
+
 	return (
-		<>
-			<div>
+		<div className="game">
+			<div className="board">
 				<Board onSquareClick={handleClick} squares={squares} />
 			</div>
-			<div>
+			<div className="status">
 				<Status winner={checkWinner(squares)} />
 			</div>
-			<div>
+			<div className="button">
 				<ResetButton onButtonClick={() => handleReset()} />
 			</div>
-		</>
+		</div>
 	);
 }
 

@@ -1,5 +1,6 @@
 import Square from "../Square/Square";
 import { BoardProps } from "./TBoard";
+import "./Board.styles.css";
 
 
 function Board({onSquareClick, squares}: BoardProps) {

@@ -1,4 +1,5 @@
 import { SquareProps } from "./TSquare";
+import "./Square.styles.css";
 
 function Square({ value, onSquareClick }: SquareProps) {
 	return (
