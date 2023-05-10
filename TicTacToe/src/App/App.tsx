@@ -3,6 +3,7 @@ import { useState } from "react";
 import Board from "../Board/Board";
 import ResetButton from "../ResetButton/ResetButton";
 import Status from "../Status/Status";
+// import Hist
 import { Input } from "./TApp";
 import "./App.styles.css";
 
@@ -33,15 +34,14 @@ function checkWinner(squares: Array<Input>): Input | "equality" {
 	return "";
 }
 
-function historyDisplay(history: Array<Array<Input>>)
-{
-	
-}
+// function historyDisplay(history: Array<Array<Input>>) {}
 
 function App() {
 	const [xTurn, setXTurn] = useState(true);
 	const [squares, setSquares] = useState(Array<Input>(9).fill(""));
 	const [history, setHistory] = useState([Array<Input>(9).fill("")]);
+
+	// function handleJumpHistory(): void {}
 
 	function handleReset(): void {
 		const nextSquares = squares.slice();
@@ -62,8 +62,6 @@ function App() {
 		setSquares(nextSquares);
 	}
 
-
-
 	return (
 		<div className="game">
 			<div className="board">
@@ -72,6 +70,9 @@ function App() {
 			<div className="status">
 				<Status winner={checkWinner(squares)} />
 			</div>
+			{/* <div className="game-info">
+				<History
+			</div> */}
 			<div className="button">
 				<ResetButton onButtonClick={() => handleReset()} />
 			</div>
