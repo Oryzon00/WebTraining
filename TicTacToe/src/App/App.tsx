@@ -3,7 +3,7 @@ import { useState } from "react";
 import Board from "../Board/Board";
 import ResetButton from "../ResetButton/ResetButton";
 import Status from "../Status/Status";
-// import Hist
+import History from "../History/History";
 import { Input } from "./TApp";
 import "./App.styles.css";
 
@@ -34,47 +34,55 @@ function checkWinner(squares: Array<Input>): Input | "equality" {
 	return "";
 }
 
-// function historyDisplay(history: Array<Array<Input>>) {}
-
 function App() {
 	const [xTurn, setXTurn] = useState(true);
-	const [squares, setSquares] = useState(Array<Input>(9).fill(""));
 	const [history, setHistory] = useState([Array<Input>(9).fill("")]);
-
-	// function handleJumpHistory(): void {}
+	const [currentMove, setCurrentMove] = useState(0);
+	const currentSquares = history[currentMove];
 
 	function handleReset(): void {
-		const nextSquares = squares.slice();
-		nextSquares.fill("");
-		setSquares(nextSquares);
 		setXTurn(true);
+		jumpToMove(0);
+		const nextHistory = [Array<Input>(9).fill("")];
+		setHistory(nextHistory);
 	}
 
-	function handleClick(index: number): void {
-		if (squares[index] !== "" || checkWinner(squares) !== "") return;
+	function handleSquareClick(index: number): void {
+		if (currentSquares[index] !== "" || checkWinner(currentSquares) !== "")
+			return;
 
-		const nextSquares = squares.slice();
+		const nextSquares = currentSquares.slice();
 		if (xTurn === true) nextSquares[index] = "X";
 		else nextSquares[index] = "O";
 
+		const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+
 		setXTurn(!xTurn);
-		setHistory(history.concat(nextSquares));
-		setSquares(nextSquares);
+		setHistory(nextHistory);
+		setCurrentMove(currentMove + 1);
+	}
+
+	function jumpToMove(move: number): void {
+		setCurrentMove(move);
+		setXTurn(move % 2 === 0);
 	}
 
 	return (
 		<div className="game">
 			<div className="board">
-				<Board onSquareClick={handleClick} squares={squares} />
+				<Board
+					onSquareClick={handleSquareClick}
+					squares={currentSquares}
+				/>
 			</div>
 			<div className="status">
-				<Status winner={checkWinner(squares)} />
+				<Status winner={checkWinner(currentSquares)} xTurn={xTurn} />
 			</div>
-			{/* <div className="game-info">
-				<History
-			</div> */}
 			<div className="button">
 				<ResetButton onButtonClick={() => handleReset()} />
+			</div>
+			<div className="game-info">
+				<History history={history} jumpTo={jumpToMove} />
 			</div>
 		</div>
 	);

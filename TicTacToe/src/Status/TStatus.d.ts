@@ -1,5 +1,6 @@
 import { Input } from "../App";
 
-export interface  StatusProps  {
+export interface StatusProps {
 	winner: Input | "equality";
-};
+	xTurn: boolean;
+}

@@ -1,10 +1,15 @@
 .game-info {
-	margin-left: 20px;
+	margin: 5px;
+	display: flex;
+	align-content: center;
+	flex-flow: column wrap;
 }
 
 .status {
 	margin: 10px;
-	
+	display: flex;
+	align-content: center;
+	flex-flow: column wrap;
 }
 .game {
 	height: 80vh;
@@ -21,7 +26,6 @@
 	display: flex;
 	align-content: center;
 	flex-flow: column wrap;
-
 }
 
 .button {

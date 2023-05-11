@@ -1,9 +1,16 @@
 import { StatusProps } from "./TStatus";
 
-function Status({ winner }: StatusProps) {
-	if (winner === "") return <h2> No winner... yet?</h2>;
-	else if (winner === "equality") return <h2> Equality! </h2>;
-	else return <h2> {winner} won ! Congratz! </h2>;
+function Status({ winner, xTurn }: StatusProps) {
+	let status: string;
+
+	if (winner === "") {
+		status = "next turn: " + (xTurn ? "X" : "O");
+	} else if (winner === "equality") {
+		status = "Equality!";
+	} else {
+		status = winner + " won ! Congratz";
+	}
+	return <h2> {status}</h2>;
 }
 
 export default Status;
